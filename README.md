@@ -72,7 +72,7 @@ public:
 
   // File Location
   void set_file_line(unsigned);
-  unsigned get_file_line(unsigned)const;
+  unsigned get_file_line()const;
   void set_file_name(some_string_type file_name);
   const char*get_truncated_file_name()const;
 };
@@ -82,7 +82,7 @@ The constructor takes a file name and optionally a data source. If no data sourc
 
 `some_string_type` can be a `std::string` or a `char*`. If the data source is a `std::FILE*` then the library will take care of calling `std::fclose`. If it is a `std::istream` then the stream is not closed by the library. For best performance open the streams in binary mode. However using text mode also works. `ByteSourceBase` provides an interface that you can use to implement further data sources. 
 
-```
+```cpp
 class ByteSourceBase{
 public:
   virtual int read(char*buffer, int size)=0;
